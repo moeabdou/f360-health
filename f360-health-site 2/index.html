@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 2040 Horizon — Forward 360</title>
+<meta name="description" content="The 2040 Horizon: we design your health to match a life lived well past 100 — read against the life you intend twenty years out, not an average.">
+<!-- ============================================================
+     PREVIEW FONT LOADING ONLY.
+     Production: self-host Newsreader (300/400/500 + italics) and
+     Inter (400/600) via next/font/local with committed .woff2, or
+     @fontsource. Do NOT use next/font/google (Brand Kit §2;
+     Firm-Learning-Log 2026-08-11).
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Brand Kit v1 tokens ── */
+:root {
+  --paper:        #F2EEE4;
+  --paper-deep:   #EAE5D7;
+  --surface:      #FBF8F0;
+  --ink:          #26231D;
+  --ink-prose:    #3A352C;
+  --muted:        #756B5A;
+  --faint:        #9B9281;
+  --hairline:     #D8D0BE;
+  --hairline-soft:#E3DCCB;
+  --sage:         #54624B;
+  --sage-deep:    #3C4736;
+  --sage-soft:    #E4E6DB;
+  --sage-tint:    #EDEEE5;
+  --cream:        #FBF8F0;
+  --cream-accent: #cfd6c1;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body { background: var(--paper); }
+body {
+  font-family: var(--font-serif); color: var(--ink-prose);
+  font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--sage-soft); color: var(--ink); }
+a { color: inherit; }
+.wrap { max-width: 968px; margin: 0 auto; padding: 0 40px; }
+
+/* ── Kit classes ── */
+.heading-serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.02em; color: var(--ink); }
+.label-micro {
+  font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.2em; color: var(--sage);
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.8125rem 1.5rem; border-radius: 2px;
+  background: var(--sage); border: 1px solid var(--sage); color: var(--surface);
+  font-family: var(--font-sans); font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  transition: background 0.14s, border-color 0.14s; cursor: pointer;
+}
+.btn-primary:hover { background: var(--sage-deep); border-color: var(--sage-deep); }
+.callout {
+  background: var(--surface); border: 1px solid var(--hairline-soft);
+  border-left: 3px solid var(--sage); padding: 24px 28px; text-align: left;
+}
+
+/* ── Brand mark ── */
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.monogram {
+  width: 40px; height: 40px; border-radius: 2px;
+  border: 1.4px solid var(--sage); color: var(--sage);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 22px; font-weight: 500;
+  line-height: 1; padding-bottom: 2px;
+}
+.wordmark { display: flex; flex-direction: column; gap: 3px; }
+.wordmark span {
+  font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink); font-weight: 600; line-height: 1;
+}
+
+/* ── Floating header ── */
+.site-head { position: absolute; top: 0; left: 0; right: 0; z-index: 5; }
+.site-head .head-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 26px 0 0;
+}
+.head-nav { display: flex; align-items: center; gap: 24px; }
+.head-link {
+  font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  font-weight: 600; padding: 6px 0;
+}
+.head-link:hover { color: var(--ink); }
+
+/* ── Hero ── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 120px 0 90px;
+  background: linear-gradient(168deg, #c4c9ba, #e3ddcd, #d7cfba, #cfc7b0);
+}
+.hero-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 42%, rgba(242, 238, 228, 0.85) 0%, rgba(242, 238, 228, 0.45) 45%, rgba(242, 238, 228, 0) 78%);
+}
+.hero-arcs, .band-arcs {
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.5; mix-blend-mode: overlay; }
+.hero-inner { position: relative; max-width: 760px; margin: 0 auto; padding: 0 32px; }
+.page-title { font-size: 58px; line-height: 1.05; margin-top: 22px; }
+.page-title em { font-style: italic; color: var(--sage); }
+.lede { font-size: 19px; line-height: 1.7; max-width: 620px; margin: 30px auto 0; }
+.hero-actions {
+  margin-top: 38px; display: flex; gap: 16px;
+  align-items: center; justify-content: center; flex-wrap: wrap;
+}
+.scroll-cue { position: absolute; left: 0; right: 0; bottom: 34px; text-align: center; }
+.scroll-cue .label-micro { color: var(--muted); }
+.scroll-cue-tick {
+  display: block; width: 1.5px; height: 14px; background: var(--sage);
+  margin: 10px auto 0; animation: f360cue 2.6s ease-in-out infinite;
+}
+@keyframes f360cue {
+  0% { transform: translateY(0); opacity: 0; }
+  25% { opacity: 0.9; } 65% { opacity: 0.9; }
+  100% { transform: translateY(26px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .scroll-cue-tick { animation: none; opacity: 0.7; } }
+
+/* ── Centered sections ── */
+.section { padding: 96px 0 0; text-align: center; }
+.section-title { font-size: 38px; line-height: 1.15; margin-top: 18px; }
+.section-title em { font-style: italic; color: var(--sage); }
+.section-intro { max-width: 620px; margin: 24px auto 0; font-size: 17.5px; line-height: 1.72; }
+
+/* ── The four dark cards ── */
+.parts {
+  margin: 44px auto 0; display: grid;
+  grid-template-columns: repeat(2, 1fr); gap: 18px; text-align: left;
+  max-width: 880px;
+}
+.part-card {
+  border-radius: 2px; padding: 32px 30px 30px; color: var(--cream);
+  position: relative; overflow: hidden; display: flex; flex-direction: column;
+}
+.part-card.olive     { background: linear-gradient(158deg, #4b4636, #6d6650); }
+.part-card.sagecard  { background: linear-gradient(158deg, #38432f, #5c6a4a); }
+.part-card.brown     { background: linear-gradient(158deg, #413528, #6f6047); }
+.part-card.sagedeep  { background: linear-gradient(158deg, #3C4736, #54624B); }
+.part-num {
+  font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; font-weight: 600; color: var(--cream-accent);
+}
+.part-card h3 {
+  font-family: var(--font-serif); font-weight: 400; font-size: 25px;
+  line-height: 1.15; margin-top: 14px; color: var(--cream);
+}
+.part-card h3 em { font-style: italic; color: var(--cream-accent); }
+.part-sub {
+  font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 600; color: var(--cream-accent);
+  margin-top: 6px; opacity: 0.85;
+}
+.part-card p { margin-top: 14px; font-size: 15.5px; line-height: 1.66; color: var(--cream); opacity: 0.94; }
+.panel-link {
+  color: var(--cream); text-decoration: underline;
+  text-decoration-color: var(--cream-accent); text-underline-offset: 3px;
+  cursor: pointer; background: none; border: none; font: inherit; padding: 0;
+}
+.panel-link:hover { text-decoration-color: var(--cream); }
+
+/* ── Blood panel dialog ── */
+dialog.panel-dialog {
+  border: 1px solid var(--hairline); border-radius: 2px;
+  background: var(--surface); color: var(--ink-prose);
+  max-width: 620px; width: calc(100% - 48px);
+  padding: 36px 38px 32px; margin: auto;
+}
+dialog.panel-dialog::backdrop { background: rgba(38, 35, 29, 0.45); }
+.panel-dialog h2 {
+  font-family: var(--font-serif); font-weight: 400; font-size: 27px;
+  letter-spacing: -0.02em; color: var(--ink); margin-top: 12px;
+}
+.panel-dialog h2 em { font-style: italic; color: var(--sage); }
+.panel-dialog .dialog-intro { margin-top: 14px; font-size: 16px; line-height: 1.68; }
+.panel-tier {
+  margin-top: 24px; font-family: var(--font-sans); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage);
+  font-weight: 600;
+}
+.panel-systems { margin-top: 12px; text-align: left; }
+.panel-system { padding: 14px 0; border-top: 1px solid var(--hairline-soft); }
+.panel-system:last-child { border-bottom: 1px solid var(--hairline-soft); }
+.panel-system h3 {
+  font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sage-deep); font-weight: 600;
+}
+.panel-system p { margin-top: 5px; font-size: 14.5px; line-height: 1.55; }
+.panel-note {
+  margin-top: 18px; font-family: var(--font-sans); font-size: 10px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); font-weight: 600;
+}
+.dialog-close {
+  position: absolute; top: 18px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--faint); font-weight: 600; padding: 6px;
+}
+.dialog-close:hover { color: var(--ink); }
+
+/* ── Coordination ── */
+.coordination { max-width: 720px; margin: 96px auto 0; }
+.callout h2 { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: var(--ink); }
+.callout p { margin-top: 12px; font-size: 16.5px; line-height: 1.7; }
+
+/* ── Closing band ── */
+.band {
+  position: relative; overflow: hidden; margin-top: 96px;
+  background: linear-gradient(158deg, #38432f, #5c6a4a);
+  color: var(--cream); text-align: center; padding: 96px 0 92px;
+}
+.band-inner { position: relative; }
+.band p {
+  font-family: var(--font-serif); font-style: italic; font-size: 26px;
+  line-height: 1.45; max-width: 600px; margin: 0 auto;
+}
+.band .band-cta {
+  margin-top: 38px; display: inline-flex; padding: 0.8125rem 1.5rem;
+  border-radius: 2px; border: 1px solid rgba(251, 248, 240, 0.55);
+  color: var(--cream); font-family: var(--font-sans); font-size: 0.6875rem;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.14s, border-color 0.14s;
+}
+.band .band-cta:hover { background: rgba(251, 248, 240, 0.12); border-color: var(--cream); }
+
+/* ── Quiet physician-coordination note under the cards ── */
+.coord-note {
+  max-width: 620px; margin: 30px auto 0;
+  font-family: var(--font-serif); font-style: italic; font-size: 15.5px;
+  line-height: 1.6; color: var(--muted);
+}
+
+/* ── Renaissance — nurse practitioner block (talent pipeline) ── */
+.renaissance {
+  border-top: 1px solid var(--hairline);
+  padding: 96px 0 92px; text-align: center;
+}
+.renaissance .r-title { font-size: 44px; line-height: 1.05; margin-top: 16px; }
+.renaissance .r-title em { font-style: italic; color: var(--sage); }
+.renaissance .r-intro {
+  max-width: 640px; margin: 26px auto 0; font-size: 17.5px; line-height: 1.72;
+}
+.renaissance .r-line {
+  font-family: var(--font-serif); font-style: italic; font-size: 20px;
+  line-height: 1.5; color: var(--sage-deep); max-width: 520px; margin: 30px auto 0;
+}
+.r-leads {
+  max-width: 720px; margin: 40px auto 0;
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+  text-align: left;
+}
+.r-lead { max-width: 300px; }
+.r-lead .r-name { font-family: var(--font-serif); font-size: 18px; color: var(--ink); }
+.r-lead .r-cred {
+  font-family: var(--font-sans); font-size: 9.5px; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--faint); font-weight: 600; margin-top: 5px; line-height: 1.5;
+}
+.renaissance .r-cta { margin-top: 44px; }
+
+/* ── Footer ── */
+footer { text-align: center; border-top: 1px solid var(--hairline); }
+.foot-line {
+  font-family: var(--font-serif); font-style: italic; font-size: 18px;
+  color: var(--sage-deep); padding: 40px 0 4px;
+}
+.foot-meta {
+  font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint);
+  display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
+  justify-content: center; padding: 14px 0 40px;
+}
+.foot-rule { width: 1px; height: 11px; background: var(--hairline); }
+.foot-meta a { text-decoration: none; color: var(--faint); }
+.foot-meta a:hover { color: var(--ink); }
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .wrap { padding: 0 24px; }
+  .page-title { font-size: 40px; }
+  .section-title { font-size: 29px; }
+  .section { padding-top: 68px; }
+  .parts { grid-template-columns: 1fr; }
+  .band p { font-size: 22px; }
+  .hero { padding: 100px 0 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Floating header ── -->
+<header class="site-head">
+  <div class="wrap">
+    <div class="head-row">
+      <a class="brand" href="https://forward360.io" aria-label="Forward 360">
+        <div class="monogram">F</div>
+        <div class="wordmark">
+          <span>Three</span>
+          <span>Sixty</span>
+        </div>
+      </a>
+      <nav class="head-nav" aria-label="Primary">
+        <a class="head-link" href="#renaissance">Practitioners</a>
+        <a class="head-link" href="https://forward360.io/login">Members</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-scrim"></div>
+    <svg class="hero-arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="#54624B" stroke-opacity="0.22" stroke-width="1.3" fill="none">
+        <path d="M-200,940 Q720,420 1640,680"/><path d="M-200,1010 Q720,490 1640,750"/>
+        <path d="M-200,1080 Q720,560 1640,820"/><path d="M-200,1150 Q720,630 1640,890"/>
+        <path d="M-200,1220 Q720,700 1640,960"/>
+      </g>
+    </svg>
+    <svg class="grain" aria-hidden="true">
+      <filter id="f360grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter>
+      <rect width="100%" height="100%" filter="url(#f360grain)"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="label-micro">Integrated Prosperity</div>
+      <h1 class="heading-serif page-title">The 2040 <em>Horizon</em></h1>
+      <p class="lede">
+        We design your health to match a life lived well past 100. Your body is read
+        against the specific life you intend to be living twenty years from now, not an
+        average — so the next two decades become a deliberate build. Your financial
+        architecture already assumes that life; the 2040 Horizon designs the physical and
+        cognitive capital to match.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:member@forward360.io?subject=Schedule%20my%20blood%20draw">Schedule your blood draw</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="label-micro">Scroll</div>
+      <span class="scroll-cue-tick"></span>
+    </div>
+  </section>
+
+  <!-- ── How the Horizon works — four dark cards ── -->
+  <section class="section" id="how-it-works">
+    <div class="wrap">
+      <div class="label-micro">How the Horizon works</div>
+      <h2 class="heading-serif section-title">Data becomes <em>direction</em>.</h2>
+      <p class="section-intro">
+        The Horizon is not a test; it is a practice. Every Membership begins with the first
+        read of your Blueprint, and from there the work is ongoing — read, refined, and
+        re-pointed as your life moves.
+      </p>
+      <div class="parts">
+
+        <div class="part-card olive">
+          <div class="part-num">01</div>
+          <h3>Your <em>Horizon</em></h3>
+          <div class="part-sub">The reference point</div>
+          <p>
+            The specific life you've named — drawn from your
+            <a class="panel-link" href="https://forward360.io/the-2040-horizon">2040 Horizon reflection</a>,
+            held as the line every result is measured against. The difference between data
+            and direction.
+          </p>
+        </div>
+
+        <div class="part-card sagecard">
+          <div class="part-num">02</div>
+          <h3>Your <em>Blueprint</em></h3>
+          <div class="part-sub">What's true about you</div>
+          <p>
+            Your biological baseline begins with a blood panel, and widens as your Horizon
+            calls for it — your genome and phenome, the microbiome, cognitive and
+            cardiometabolic measures, advanced imaging and body-composition scans, and your
+            own notes — held in one place and read as a whole. The first draw is included
+            with your Membership.
+            <button class="panel-link" type="button" onclick="document.getElementById('panel-dialog').showModal()">See what we measure</button>
+          </p>
+        </div>
+
+        <div class="part-card brown">
+          <div class="part-num">03</div>
+          <h3>Your <em>Pathway</em></h3>
+          <div class="part-sub">What we do about it</div>
+          <p>
+            A short, deliberate set of actionable possibilities — set with the Forward 360
+            clinical team and co-designed with you, in a private session, in plain language.
+            You remain the author of every decision.
+          </p>
+        </div>
+
+        <div class="part-card sagedeep">
+          <div class="part-num">04</div>
+          <h3>The Vitality <em>Loop</em></h3>
+          <div class="part-sub">The cadence</div>
+          <p>
+            Every four months, a fresh reading re-points the focus. A single test is a
+            number; a rhythm of them is a trajectory — measured, and yours. This is how
+            the Horizon evolves with you.
+          </p>
+        </div>
+
+      </div>
+      <p class="coord-note">Designed with the Forward 360 clinical team, and always in coordination with your own physician — never in place of them.</p>
+    </div>
+  </section>
+
+  <!-- ── What we measure dialog ── -->
+  <dialog class="panel-dialog" id="panel-dialog" aria-labelledby="panel-dialog-title">
+    <button class="dialog-close" type="button" onclick="document.getElementById('panel-dialog').close()">Close</button>
+    <div class="label-micro">What we measure</div>
+    <h2 id="panel-dialog-title">It begins with blood. It does not <em>end</em> there.</h2>
+    <p class="dialog-intro">
+      Designed by the Forward 360 clinical team and reviewed with you line by line,
+      against your Horizon.
+    </p>
+
+    <div class="panel-tier">The first read — your blood panel</div>
+    <div class="panel-systems">
+      <div class="panel-system">
+        <h3>Metabolic</h3>
+        <p>Fasting glucose, fasting insulin, HbA1c — how your body handles fuel today, and where it's headed.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Cardiovascular</h3>
+        <p>The full lipid picture, including ApoB and Lp(a) — the markers that predict.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Inflammation</h3>
+        <p>hs-CRP, homocysteine, and a complete blood count — the quiet signals that precede the loud ones.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Hormonal</h3>
+        <p>Thyroid, cortisol, and the sex hormones — the systems that set your energy, recovery, and drive.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Organ function</h3>
+        <p>Liver and kidney markers, including cystatin-C — the infrastructure the rest depends on.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Micronutrients</h3>
+        <p>Vitamin D, B12, ferritin, magnesium — the inputs that are simplest to correct and most often overlooked.</p>
+      </div>
+    </div>
+
+    <div class="panel-tier">The fuller picture — as your Horizon calls for it</div>
+    <div class="panel-systems">
+      <div class="panel-system">
+        <h3>Genome &amp; phenome</h3>
+        <p>The fixed code and the living readout — genetic possibility turned into clinical foresight.</p>
+      </div>
+      <div class="panel-system">
+        <h3>The microbiome</h3>
+        <p>The gut as a system of systems — a working lever in metabolism, immunity, and mood.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Cognitive &amp; brain health</h3>
+        <p>Baselines for memory, processing, and long-term neurological resilience.</p>
+      </div>
+      <div class="panel-system">
+        <h3>Advanced imaging &amp; body composition</h3>
+        <p>Full-body scans and composition measures — structure, not just chemistry.</p>
+      </div>
+    </div>
+
+    <div class="panel-note">
+      The exact program is set by the clinical team, sequenced to your Horizon, and refined
+      as the field moves — always in coordination with your own physician.
+    </div>
+  </dialog>
+
+  <!-- ── Closing band ── -->
+  <section class="band">
+    <svg class="band-arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="#F2EEE4" stroke-opacity="0.22" stroke-width="1.3" fill="none">
+        <path d="M-200,940 Q720,420 1640,680"/><path d="M-200,1010 Q720,490 1640,750"/>
+        <path d="M-200,1080 Q720,560 1640,820"/><path d="M-200,1150 Q720,630 1640,890"/>
+        <path d="M-200,1220 Q720,700 1640,960"/>
+      </g>
+    </svg>
+    <div class="band-inner">
+      <p>
+        Health is one of the three Compounders of your Arc —
+        and the one the other two are built on.
+      </p>
+      <a class="band-cta" href="https://forward360.io">Explore Membership</a>
+    </div>
+  </section>
+
+  <!-- ── Renaissance — for nurse practitioners (talent pipeline) ── -->
+  <section class="renaissance" id="renaissance">
+    <div class="wrap">
+      <div class="label-micro">For Nurse Practitioners</div>
+      <h2 class="heading-serif r-title"><em>Renaissance</em></h2>
+      <p class="r-intro">
+        For a century, medicine has been organized around illness. The next era belongs to
+        wellbeing — measured, personal, designed — and no clinician is better positioned to
+        deliver it than the nurse practitioner. Renaissance is a six-week salon: one question
+        each week, worked at one table, led by the scientist who made wellbeing measurable and
+        the Yale practitioner building it into daily practice — for the NPs who intend to lead
+        the era, not adjust to it.
+      </p>
+      <p class="r-line">
+        One question each week. The whole table works it. Not a course you complete —
+        the first tier of a collective you belong to.
+      </p>
+      <div class="r-leads">
+        <div class="r-lead">
+          <div class="r-name">Dr. Amanda Swan</div>
+          <div class="r-cred">DNP, WHNP-BC, ANP, IFMCP · Lecturer, Yale School of Nursing · Founder, Swan Integrative Health &amp; Wellness</div>
+        </div>
+        <div class="r-lead">
+          <div class="r-name">Dr. Leroy Hood</div>
+          <div class="r-cred">MD, PhD · Founder &amp; CEO, Phenome Health · Co-Founder &amp; Professor, ISB · Chief Innovation Officer, The Buck Institute</div>
+        </div>
+      </div>
+
+      <div class="r-cta">
+        <a class="btn-primary" href="/renaissance">Request an invitation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-line">A smarter way to think, grow, and live.</div>
+    <div class="foot-meta">
+      <span>© 2026 Forward 360</span>
+      <span class="foot-rule"></span>
+      <a href="https://forward360.io">Forward360.io</a>
+      <span class="foot-rule"></span>
+      <a href="https://forward360.io/promise">The Member Data Promise</a>
+      <span class="foot-rule"></span>
+      <a href="https://forward360.io/privacy">Privacy &amp; Security</a>
+      <span class="foot-rule"></span>
+      <span>Private and confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Close the panel dialog on backdrop click
+  const dlg = document.getElementById('panel-dialog');
+  dlg.addEventListener('click', (e) => {
+    const r = dlg.getBoundingClientRect();
+    const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!inside) dlg.close();
+  });
+</script>
+
+</body>
+</html>
