@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renaissance — Request an Invitation · Forward 360</title>
+<meta name="description" content="Renaissance is a six-week salon for nurse practitioners who intend to lead the era of measured, personal, designed wellbeing. The first cohort is small and by invitation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:#F2EEE4; --paper-deep:#EAE5D7; --surface:#FBF8F0;
+  --ink:#26231D; --ink-prose:#3A352C; --muted:#756B5A; --faint:#9B9281;
+  --hairline:#D8D0BE; --hairline-soft:#E3DCCB;
+  --sage:#54624B; --sage-deep:#3C4736; --sage-soft:#E4E6DB; --sage-tint:#EDEEE5;
+  --font-serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --font-sans:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+html,body { background:var(--paper); }
+body {
+  font-family:var(--font-serif); color:var(--ink-prose);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--sage-soft); color:var(--ink); }
+a { color:inherit; }
+.wrap { max-width:968px; margin:0 auto; padding:0 40px; }
+.doc { max-width:720px; margin:0 auto; }
+
+.label-micro {
+  font-family:var(--font-sans); font-size:0.6875rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.2em; color:var(--sage);
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  padding:0.8125rem 1.5rem; border-radius:2px;
+  background:var(--sage); border:1px solid var(--sage); color:var(--surface);
+  font-family:var(--font-sans); font-size:0.6875rem; font-weight:600;
+  letter-spacing:0.1em; text-transform:uppercase; text-decoration:none;
+  transition:background 0.14s,border-color 0.14s; cursor:pointer;
+}
+.btn-primary:hover { background:var(--sage-deep); border-color:var(--sage-deep); }
+
+/* header */
+.brand { display:flex; align-items:center; gap:14px; text-decoration:none; }
+.monogram {
+  width:40px; height:40px; border-radius:2px;
+  border:1.4px solid var(--sage); color:var(--sage);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-serif); font-size:22px; font-weight:500; line-height:1; padding-bottom:2px;
+}
+.wordmark { display:flex; flex-direction:column; gap:3px; }
+.wordmark span {
+  font-family:var(--font-sans); font-size:10.5px; letter-spacing:0.22em;
+  text-transform:uppercase; color:var(--ink); font-weight:600; line-height:1;
+}
+.site-head { border-bottom:1px solid var(--hairline); }
+.head-row { display:flex; align-items:center; justify-content:space-between; padding:26px 0 22px; }
+.head-link {
+  font-family:var(--font-sans); font-size:11px; letter-spacing:0.13em;
+  text-transform:uppercase; color:var(--muted); text-decoration:none; font-weight:600;
+}
+.head-link:hover { color:var(--ink); }
+
+/* intro */
+.r-hero { padding:80px 0 8px; }
+.r-title { font-family:var(--font-serif); font-weight:400; letter-spacing:-0.02em; color:var(--ink); font-size:52px; line-height:1.05; margin-top:20px; }
+.r-title em { font-style:italic; color:var(--sage); }
+.r-lede { font-size:18.5px; line-height:1.72; margin-top:28px; }
+.r-line {
+  font-family:var(--font-serif); font-style:italic; font-size:20px;
+  line-height:1.5; color:var(--sage-deep); margin-top:26px;
+}
+
+/* leads */
+.r-leads { margin:44px 0 0; display:flex; gap:40px; flex-wrap:wrap; }
+.r-lead { max-width:320px; }
+.r-name { font-family:var(--font-serif); font-size:18px; color:var(--ink); }
+.r-cred {
+  font-family:var(--font-sans); font-size:9.5px; letter-spacing:0.13em;
+  text-transform:uppercase; color:var(--faint); font-weight:600; margin-top:5px; line-height:1.5;
+}
+
+/* form */
+.section-label {
+  margin-top:64px; padding-bottom:12px; border-bottom:1px solid var(--hairline);
+  font-family:var(--font-sans); font-size:11px; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--sage); font-weight:600;
+}
+.form-intro { margin-top:26px; font-size:16.5px; line-height:1.72; }
+.r-form { margin-top:34px; }
+.r-fields { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.r-field { display:flex; flex-direction:column; gap:8px; }
+.r-question { display:flex; flex-direction:column; gap:10px; margin-top:28px; }
+.field-label {
+  font-family:var(--font-sans); font-size:10.5px; letter-spacing:0.06em;
+  color:var(--muted); font-weight:600; line-height:1.5;
+}
+.field {
+  display:block; width:100%;
+  background:var(--surface); border:1px solid var(--hairline);
+  border-radius:2px; padding:13px 15px;
+  font-family:var(--font-serif); font-size:16px; color:var(--ink-prose); line-height:1.55;
+}
+.field::placeholder { color:var(--faint); font-style:italic; }
+.field:focus { outline:none; border-color:var(--sage); background:#FFFFFF; }
+textarea.field { resize:vertical; min-height:104px; }
+.submit-row { margin-top:32px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.submit-note { font-family:var(--font-serif); font-style:italic; font-size:15px; color:var(--muted); }
+.form-ack { margin-top:22px; font-family:var(--font-serif); font-style:italic; font-size:16.5px; color:var(--sage-deep); }
+.form-err { margin-top:22px; font-family:var(--font-serif); font-style:italic; font-size:15.5px; color:#7a3b34; }
+.r-close {
+  font-family:var(--font-serif); font-style:italic; font-size:20px; line-height:1.5;
+  color:var(--sage-deep); margin:64px 0 0; text-align:center;
+}
+
+/* footer */
+footer { border-top:1px solid var(--hairline); margin-top:80px; text-align:center; }
+.foot-line { font-family:var(--font-serif); font-style:italic; font-size:18px; color:var(--sage-deep); padding:40px 0 4px; }
+.foot-meta {
+  font-family:var(--font-sans); font-size:10.5px; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--faint);
+  display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:center; padding:14px 0 40px;
+}
+.foot-rule { width:1px; height:11px; background:var(--hairline); }
+.foot-meta a { text-decoration:none; color:var(--faint); }
+.foot-meta a:hover { color:var(--ink); }
+
+@media (max-width:640px) {
+  .wrap { padding:0 24px; }
+  .r-title { font-size:38px; }
+  .r-fields { grid-template-columns:1fr; gap:18px; }
+  .r-hero { padding:56px 0 8px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <div class="head-row">
+      <a class="brand" href="/" aria-label="Forward 360">
+        <div class="monogram">F</div>
+        <div class="wordmark"><span>Three</span><span>Sixty</span></div>
+      </a>
+      <a class="head-link" href="/">← Back to the 2040 Horizon</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="r-hero">
+    <div class="wrap doc">
+      <div class="label-micro">For Nurse Practitioners</div>
+      <h1 class="r-title"><em>Renaissance</em></h1>
+      <p class="r-lede">
+        For a century, medicine has been organized around illness. The next era belongs to
+        wellbeing — measured, personal, designed — and no clinician is better positioned to
+        deliver it than the nurse practitioner. Renaissance is a six-week salon: one question
+        each week, worked at one table, led by the scientist who made wellbeing measurable and
+        the Yale practitioner building it into daily practice — for the NPs who intend to lead
+        the era, not adjust to it.
+      </p>
+      <p class="r-line">
+        One question each week. The whole table works it. Not a course you complete —
+        the first tier of a collective you belong to.
+      </p>
+      <div class="r-leads">
+        <div class="r-lead">
+          <div class="r-name">Dr. Amanda Swan</div>
+          <div class="r-cred">DNP, WHNP-BC, ANP, IFMCP · Lecturer, Yale School of Nursing · Founder, Swan Integrative Health &amp; Wellness</div>
+        </div>
+        <div class="r-lead">
+          <div class="r-name">Dr. Leroy Hood</div>
+          <div class="r-cred">MD, PhD · Founder &amp; CEO, Phenome Health · Co-Founder &amp; Professor, ISB · Chief Innovation Officer, The Buck Institute</div>
+        </div>
+      </div>
+
+      <div class="section-label">The invitation</div>
+      <p class="form-intro">
+        The first cohort is deliberately small and admission is by invitation. Requesting an
+        invitation asks two questions of you — how you think, and where your practice is going.
+        Program tuition is shared with your invitation.
+      </p>
+
+      <!-- ============================================================
+           SUBMISSIONS: posts to Formspree form xgawkjpg, which emails
+           talent@forward360.io and stores each entry in the Formspree
+           dashboard. To change the destination later, edit the form's
+           settings in Formspree (no code change needed).
+           ============================================================ -->
+      <form class="r-form" id="renaissance-invite" action="https://formspree.io/f/xgawkjpg" method="POST">
+        <input type="hidden" name="_subject" value="Renaissance invitation request — f360.health">
+        <div class="r-fields">
+          <label class="r-field">
+            <span class="field-label">Name</span>
+            <input class="field" type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="r-field">
+            <span class="field-label">Credentials</span>
+            <input class="field" type="text" name="credentials" placeholder="DNP, FNP-BC…" required>
+          </label>
+          <label class="r-field">
+            <span class="field-label">Email</span>
+            <input class="field" type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+        <label class="r-question">
+          <span class="field-label">What belief about health or medicine have you changed your mind about — and what changed it?</span>
+          <textarea class="field" name="What they changed their mind about" rows="4" required></textarea>
+        </label>
+        <label class="r-question">
+          <span class="field-label">Describe the practice you intend to be running in five years — and what stands between you and it.</span>
+          <textarea class="field" name="The practice they intend to run" rows="4" required></textarea>
+        </label>
+        <div class="submit-row">
+          <button class="btn-primary" type="submit" id="r-submit">Submit your request</button>
+          <span class="submit-note">We read every answer. Invitations follow within two weeks.</span>
+        </div>
+        <p class="form-ack" id="form-ack" hidden>Thank you — your request is in. We read every answer, and invitations follow within two weeks.</p>
+        <p class="form-err" id="form-err" hidden>Something went wrong sending that. Please email us directly at talent@forward360.io.</p>
+      </form>
+
+      <p class="r-close">The future of practice belongs to the practitioners who design it.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-line">A smarter way to think, grow, and live.</div>
+    <div class="foot-meta">
+      <span>© 2026 Forward 360</span>
+      <span class="foot-rule"></span>
+      <a href="https://forward360.io">Forward360.io</a>
+      <span class="foot-rule"></span>
+      <a href="https://forward360.io/privacy">Privacy &amp; Security</a>
+      <span class="foot-rule"></span>
+      <span>Private and confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // AJAX submit to Formspree — keeps the visitor on the page and shows the
+  // inline thank-you. Falls back to an error note if the POST fails.
+  (function () {
+    var form = document.getElementById('renaissance-invite');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ack = document.getElementById('form-ack');
+      var err = document.getElementById('form-err');
+      var btn = document.getElementById('r-submit');
+      err.hidden = true;
+      // Guard against shipping with the placeholder endpoint still in place.
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+        err.hidden = false;
+        return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (r) {
+        if (r.ok) {
+          form.reset();
+          form.querySelector('.r-fields').style.display = 'none';
+          form.querySelectorAll('.r-question, .submit-row').forEach(function (el) { el.style.display = 'none'; });
+          ack.hidden = false;
+        } else {
+          btn.disabled = false; btn.textContent = 'Submit your request';
+          err.hidden = false;
+        }
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = 'Submit your request';
+        err.hidden = false;
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
